@@ -79,5 +79,10 @@ namespace Core
         {
             return new ObservableCollection<Product>(BigShopBase_01Entities.GetContext().Product);
         }
+
+        public static ObservableCollection<Unit> GetUnits()
+        {
+            return new ObservableCollection<Unit>(BigShopBase_01Entities.GetContext().Unit);
+        }
     }
 }

@@ -22,8 +22,19 @@
             <RowDefinition/>
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal">
             <Button x:Name="btnAdd" Content="Добавить"/>
+            <ComboBox x:Name="cmBoxUnits" ItemsSource="{Binding Units}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox x:Name="cmBoxDate" Margin="10 0">
+                <ComboBoxItem Content="Все"/>
+                <ComboBoxItem Content="Текущий месяц"/>
+            </ComboBox>
         </StackPanel>
         <Image />
         <DataGrid Grid.Row="2" Grid.Column="1" ItemsSource="{Binding showedProducts}" IsReadOnly="True" AutoGenerateColumns="False" x:Name="gridProducts">
@@ -59,7 +70,7 @@
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Content="↤" x:Name="btnGoPrevious" Click="btnGoPrevious_Click"/>
-                <Label x:Name="lblPages"/>
+                <Label x:Name="lblPages" VerticalContentAlignment="Center"/>
                 <Button Content="↣" x:Name="btnGoForward" Click="btnGoForward_Click"/>
             </StackPanel>
             <ComboBox Name="cmBox" Margin="100 0 0 0" SelectionChanged="cmBox_SelectionChanged">

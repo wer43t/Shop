@@ -22,6 +22,7 @@ namespace Shop.Pages
     public partial class ProductsPage : Page
     {
         public ObservableCollection<Product> Products { get; set; }
+        public ObservableCollection<Unit> Units { get; set; }
         public List<Product> showedProducts { get; set; }
         private int startIndex;
         private int separator;
@@ -30,6 +31,7 @@ namespace Shop.Pages
         {
             InitializeComponent();
             Products = DataAccess.GetProducts();
+            Units = DataAccess.GetUnits();
             startIndex = 0;
             separator = Convert.ToInt32((cmBox.SelectedItem as ComboBoxItem).Content.ToString());
             GoPagination();
@@ -41,6 +43,7 @@ namespace Shop.Pages
             showedProducts = Products.ToList().GetRange(startIndex, test);
             gridProducts.ItemsSource = showedProducts;
             this.DataContext = this;
+            lblPages.Content = $"{startIndex + test} из {Products.Count}";
         }
 
         private void btnGoPrevious_Click(object sender, RoutedEventArgs e)
