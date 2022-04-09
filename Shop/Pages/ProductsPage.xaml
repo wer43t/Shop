@@ -24,20 +24,21 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal">
             <Button x:Name="btnAdd" Content="Добавить"/>
-            <ComboBox x:Name="cmBoxUnits" ItemsSource="{Binding Units}">
+            <ComboBox x:Name="cmBoxUnits" ItemsSource="{Binding Units}" SelectionChanged="cmBoxUnits_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ComboBox x:Name="cmBoxDate" Margin="10 0">
+            <ComboBox x:Name="cbMonthFilter" Margin="10 0" SelectionChanged="cbMonthFilter_SelectionChanged">
                 <ComboBoxItem Content="Все"/>
                 <ComboBoxItem Content="Текущий месяц"/>
             </ComboBox>
+            <TextBox x:Name="tbSearch" TextChanged="tbSearch_TextChanged" Width="100" VerticalContentAlignment="Center"/>
         </StackPanel>
         <Image />
-        <DataGrid Grid.Row="2" Grid.Column="1" ItemsSource="{Binding showedProducts}" IsReadOnly="True" AutoGenerateColumns="False" x:Name="gridProducts">
+        <DataGrid Grid.Row="2" Grid.Column="1" ItemsSource="{Binding showedProducts}" IsReadOnly="True" AutoGenerateColumns="False" x:Name="gridProducts" SelectionChanged="gridProducts_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
                 <DataGridTemplateColumn Header="Photo">
@@ -79,6 +80,8 @@
                 <ComboBoxItem Content="200"/>
                 <ComboBoxItem Content="Все"/>
             </ComboBox>
+            <Button x:Name="btnDelete" Content="Удалить" IsEnabled="False"/>
+            <Button x:Name="btnEdit" Content="Изменить" IsEnabled="False" Click="btnEdit_Click"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -15,8 +15,7 @@ namespace Core
     
     public partial class BigShopBase_01Entities : DbContext
     {
-        private static  BigShopBase_01Entities _context;
-
+        private static BigShopBase_01Entities _context;
         public BigShopBase_01Entities()
             : base("name=BigShopBase_01Entities")
         {
@@ -29,6 +28,7 @@ namespace Core
 
             return _context;
         }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

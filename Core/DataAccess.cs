@@ -84,5 +84,34 @@ namespace Core
         {
             return new ObservableCollection<Unit>(BigShopBase_01Entities.GetContext().Unit);
         }
+
+        public static ObservableCollection<Country> GetCountries()
+        {
+            return new ObservableCollection<Country>(BigShopBase_01Entities.GetContext().Country);
+        }
+
+        public static bool DeleteProduct(Product product)
+        {
+            BigShopBase_01Entities.GetContext().Product.Remove(product);
+            return Convert.ToBoolean(BigShopBase_01Entities.GetContext().SaveChanges());
+        }
+
+        public static ObservableCollection<ProductCountry> GetProductCountries()
+        {
+            return new ObservableCollection<ProductCountry>(BigShopBase_01Entities.GetContext().ProductCountry);
+        }
+
+        public static bool SaveProduct(Product product, List<ProductCountry> productCountries)
+        {
+            if (GetProducts().Where(p => p.Id == product.Id).Count() == 0)
+            {
+                product.AddDate = DateTime.Now;
+                BigShopBase_01Entities.GetContext().Product.Add(product);
+            }
+            else
+                BigShopBase_01Entities.GetContext().Product.SingleOrDefault(p => p.Id == product.Id);
+
+            return Convert.ToBoolean(BigShopBase_01Entities.GetContext().SaveChanges());
+        }
     }
 }
