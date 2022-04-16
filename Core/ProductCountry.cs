@@ -17,6 +17,7 @@ namespace Core
         public int Id { get; set; }
         public int CountryId { get; set; }
         public int ProductId { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Country Country { get; set; }
         public virtual Product Product { get; set; }

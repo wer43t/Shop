@@ -16,6 +16,7 @@ namespace Core
     public partial class BigShopBase_01Entities : DbContext
     {
         private static BigShopBase_01Entities _context;
+
         public BigShopBase_01Entities()
             : base("name=BigShopBase_01Entities")
         {
@@ -28,8 +29,7 @@ namespace Core
 
             return _context;
         }
-
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -51,5 +51,6 @@ namespace Core
         public virtual DbSet<Unit> Unit { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Worker> Worker { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

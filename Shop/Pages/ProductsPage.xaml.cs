@@ -50,8 +50,18 @@ namespace Shop.Pages
             separator = Convert.ToInt32((cmBox.SelectedItem as ComboBoxItem).Content.ToString());
             cbMonthFilter.SelectedIndex = 0;
             cmBoxUnits.SelectedIndex = 3;
+            cbSort.SelectedIndex = 0;
+            DataAccess.NewItemAddedEvent += DataAccess_NewItemAddedEvent;
             this.DataContext = this;
+        }
+
+        private void DataAccess_NewItemAddedEvent()
+        {
+            Products = DataAccess.GetProducts();
+            showedProducts = Products.ToList();
+            ApplyFilters();
             GoPagination();
+            gridProducts.Items.Refresh();
         }
 
         private void GoPagination()
@@ -112,7 +122,13 @@ namespace Shop.Pages
                     showedProducts = showedProducts.Where(p => p.AddDate.Month == DateTime.Now.Month).ToList();
                 }
 
+                var sort = (cbSort.SelectedItem as ComboBoxItem).Content.ToString();
+
                 showedProducts = showedProducts.Where(p => p.Name.ToLower().Contains(text.ToLower()) || p.Description.ToLower().Contains(text.ToLower())).ToList();
+                showedProducts = showedProducts.OrderBy(Sortings[sort]).ToList();
+                if (sort == "Я-А" || sort == "Сначала новые")
+                    showedProducts.Reverse();
+
                 gridProducts.ItemsSource = showedProducts;
             }
         }
@@ -145,5 +161,24 @@ namespace Shop.Pages
         {
             NavigationService.Navigate(new Pages.ProductPage(gridProducts.SelectedItem as Product));
         }
+
+        private void cbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ApplyFilters();
+
+
+            var sort = (cbSort.SelectedItem as ComboBoxItem).Content.ToString();
+            showedProducts = showedProducts.OrderBy(Sortings[sort]).ToList();
+            if (sort == "Я-А" || sort == "Сначала новые")
+                showedProducts.Reverse();
+            gridProducts.ItemsSource = showedProducts;
+            GoPagination();
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.ProductPage());
+        }
+
     }
 }

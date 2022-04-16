@@ -28,6 +28,7 @@ namespace Core
         public string Email { get; set; }
         public System.DateTime AddDate { get; set; }
         public int UserId { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Gender Gender { get; set; }
         public virtual User User { get; set; }

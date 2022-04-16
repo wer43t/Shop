@@ -16,6 +16,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="AddDate" Type="date" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -24,6 +25,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Color" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -31,6 +33,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -41,6 +44,7 @@
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="ClientId" Type="int" />
           <Property Name="StatusOrderId" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -52,6 +56,7 @@
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="UnitId" Type="int" Nullable="false" />
           <Property Name="AddDate" Type="date" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductCountry">
           <Key>
@@ -60,6 +65,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CountryId" Type="int" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductIntake">
           <Key>
@@ -69,6 +75,7 @@
           <Property Name="SupplierId" Type="int" Nullable="false" />
           <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductIntakeProduct">
           <Key>
@@ -80,6 +87,7 @@
           <Property Name="Count" Type="int" Nullable="false" />
           <Property Name="PriceUnit" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="StatusIntakeId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductOrder">
           <Key>
@@ -89,6 +97,7 @@
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -96,6 +105,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="StatusIntake">
           <Key>
@@ -103,6 +113,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="StatusOrder">
           <Key>
@@ -110,6 +121,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -117,6 +129,17 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -124,6 +147,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="3" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -133,6 +157,7 @@
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Worker">
           <Key>
@@ -141,6 +166,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FIO" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Client_Gender">
           <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
@@ -360,6 +386,7 @@
           <EntitySet Name="StatusIntake" EntityType="Self.StatusIntake" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StatusOrder" EntityType="Self.StatusOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
@@ -451,6 +478,7 @@
           <NavigationProperty Name="User" Relationship="Self.FK_Client_User1" FromRole="Client" ToRole="User" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_Client" FromRole="Client" ToRole="Order" />
           <NavigationProperty Name="Order1" Relationship="Self.FK_Order_Client1" FromRole="Client" ToRole="Order" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -460,6 +488,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Color" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ProductCountry" Relationship="Self.FK_ProductCountry_Country" FromRole="Country" ToRole="ProductCountry" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -468,6 +497,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Client_Gender" FromRole="Gender" ToRole="Client" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -483,6 +513,7 @@
           <NavigationProperty Name="StatusOrder" Relationship="Self.FK_Order_StatusOrder" FromRole="Order" ToRole="StatusOrder" />
           <NavigationProperty Name="Worker" Relationship="Self.FK_Order_Worker" FromRole="Order" ToRole="Worker" />
           <NavigationProperty Name="ProductOrder" Relationship="Self.FK_ProductOrder_Order" FromRole="Order" ToRole="ProductOrder" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -498,6 +529,7 @@
           <NavigationProperty Name="ProductCountry" Relationship="Self.FK_ProductCountry_Product" FromRole="Product" ToRole="ProductCountry" />
           <NavigationProperty Name="ProductIntakeProduct" Relationship="Self.FK_ProductIntakeProduct_Product" FromRole="Product" ToRole="ProductIntakeProduct" />
           <NavigationProperty Name="ProductOrder" Relationship="Self.FK_ProductOrder_Product" FromRole="Product" ToRole="ProductOrder" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductCountry">
           <Key>
@@ -508,6 +540,7 @@
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Country" Relationship="Self.FK_ProductCountry_Country" FromRole="ProductCountry" ToRole="Country" />
           <NavigationProperty Name="Product" Relationship="Self.FK_ProductCountry_Product" FromRole="ProductCountry" ToRole="Product" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductIntake">
           <Key>
@@ -519,6 +552,7 @@
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK_ProductIntake_Supplier" FromRole="ProductIntake" ToRole="Supplier" />
           <NavigationProperty Name="ProductIntakeProduct" Relationship="Self.FK_ProductIntakeProduct_ProductIntake" FromRole="ProductIntake" ToRole="ProductIntakeProduct" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductIntakeProduct">
           <Key>
@@ -533,6 +567,7 @@
           <NavigationProperty Name="Product" Relationship="Self.FK_ProductIntakeProduct_Product" FromRole="ProductIntakeProduct" ToRole="Product" />
           <NavigationProperty Name="ProductIntake" Relationship="Self.FK_ProductIntakeProduct_ProductIntake" FromRole="ProductIntakeProduct" ToRole="ProductIntake" />
           <NavigationProperty Name="StatusIntake" Relationship="Self.FK_ProductIntakeProduct_StatusIntake" FromRole="ProductIntakeProduct" ToRole="StatusIntake" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductOrder">
           <Key>
@@ -544,6 +579,7 @@
           <Property Name="Count" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="Self.FK_ProductOrder_Order" FromRole="ProductOrder" ToRole="Order" />
           <NavigationProperty Name="Product" Relationship="Self.FK_ProductOrder_Product" FromRole="ProductOrder" ToRole="Product" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -552,6 +588,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="StatusIntake">
           <Key>
@@ -560,6 +597,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ProductIntakeProduct" Relationship="Self.FK_ProductIntakeProduct_StatusIntake" FromRole="StatusIntake" ToRole="ProductIntakeProduct" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="StatusOrder">
           <Key>
@@ -568,6 +606,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_StatusOrder" FromRole="StatusOrder" ToRole="Order" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -576,6 +615,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ProductIntake" Relationship="Self.FK_ProductIntake_Supplier" FromRole="Supplier" ToRole="ProductIntake" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -584,6 +624,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Product_Unit" FromRole="Unit" ToRole="Product" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -596,6 +637,7 @@
           <NavigationProperty Name="Client" Relationship="Self.FK_Client_User1" FromRole="User" ToRole="Client" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="Worker" Relationship="Self.FK_Worker_User" FromRole="User" ToRole="Worker" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Worker">
           <Key>
@@ -606,6 +648,7 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_Worker" FromRole="Worker" ToRole="Order" />
           <NavigationProperty Name="User" Relationship="Self.FK_Worker_User" FromRole="Worker" ToRole="User" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_Client_Gender">
           <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
@@ -896,7 +939,18 @@
             <End Role="User" EntitySet="User" />
             <End Role="Worker" EntitySet="Worker" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="BigShopBase_01Model.sysdiagrams" />
         </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -906,6 +960,7 @@
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="BigShopBase_01Model.Client">
               <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FIO" ColumnName="FIO" />
                 <ScalarProperty Name="GenderId" ColumnName="GenderId" />
@@ -919,6 +974,7 @@
           <EntitySetMapping Name="Country">
             <EntityTypeMapping TypeName="BigShopBase_01Model.Country">
               <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Color" ColumnName="Color" />
@@ -928,6 +984,7 @@
           <EntitySetMapping Name="Gender">
             <EntityTypeMapping TypeName="BigShopBase_01Model.Gender">
               <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
@@ -936,6 +993,7 @@
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="BigShopBase_01Model.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -947,6 +1005,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="BigShopBase_01Model.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -959,6 +1018,7 @@
           <EntitySetMapping Name="ProductCountry">
             <EntityTypeMapping TypeName="BigShopBase_01Model.ProductCountry">
               <MappingFragment StoreEntitySet="ProductCountry">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -968,6 +1028,7 @@
           <EntitySetMapping Name="ProductIntake">
             <EntityTypeMapping TypeName="BigShopBase_01Model.ProductIntake">
               <MappingFragment StoreEntitySet="ProductIntake">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
                 <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
@@ -978,6 +1039,7 @@
           <EntitySetMapping Name="ProductIntakeProduct">
             <EntityTypeMapping TypeName="BigShopBase_01Model.ProductIntakeProduct">
               <MappingFragment StoreEntitySet="ProductIntakeProduct">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="ProductIntakeId" ColumnName="ProductIntakeId" />
@@ -990,6 +1052,7 @@
           <EntitySetMapping Name="ProductOrder">
             <EntityTypeMapping TypeName="BigShopBase_01Model.ProductOrder">
               <MappingFragment StoreEntitySet="ProductOrder">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
@@ -1000,6 +1063,7 @@
           <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="BigShopBase_01Model.Role">
               <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
@@ -1008,6 +1072,7 @@
           <EntitySetMapping Name="StatusIntake">
             <EntityTypeMapping TypeName="BigShopBase_01Model.StatusIntake">
               <MappingFragment StoreEntitySet="StatusIntake">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
@@ -1016,6 +1081,7 @@
           <EntitySetMapping Name="StatusOrder">
             <EntityTypeMapping TypeName="BigShopBase_01Model.StatusOrder">
               <MappingFragment StoreEntitySet="StatusOrder">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
@@ -1024,6 +1090,7 @@
           <EntitySetMapping Name="Supplier">
             <EntityTypeMapping TypeName="BigShopBase_01Model.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
@@ -1032,6 +1099,7 @@
           <EntitySetMapping Name="Unit">
             <EntityTypeMapping TypeName="BigShopBase_01Model.Unit">
               <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
@@ -1040,6 +1108,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="BigShopBase_01Model.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
@@ -1050,9 +1119,21 @@
           <EntitySetMapping Name="Worker">
             <EntityTypeMapping TypeName="BigShopBase_01Model.Worker">
               <MappingFragment StoreEntitySet="Worker">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FIO" ColumnName="FIO" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BigShopBase_01Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

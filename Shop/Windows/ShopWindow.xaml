@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="Shop" Height="450" Width="800">
     <Grid>
-        <Frame x:Name="frame" NavigationUIVisibility="Hidden"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="btnGoBack" Content="Назад" Click="btnGoBack_Click"/>
+            <Button x:Name="btnGoForward" Content="Вперед" Click="btnGoForward_Click"/>
+        </StackPanel>
+
+        <Frame x:Name="frame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
     </Grid>
 </Window>

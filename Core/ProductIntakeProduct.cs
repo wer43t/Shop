@@ -20,6 +20,7 @@ namespace Core
         public int Count { get; set; }
         public decimal PriceUnit { get; set; }
         public int StatusIntakeId { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual ProductIntake ProductIntake { get; set; }

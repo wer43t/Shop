@@ -107,6 +107,9 @@
     <Compile Include="Supplier.cs">
       <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Unit.cs">
       <DependentUpon>Shop.tt</DependentUpon>
     </Compile>

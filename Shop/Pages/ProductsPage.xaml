@@ -23,7 +23,7 @@
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal">
-            <Button x:Name="btnAdd" Content="Добавить"/>
+            <Button x:Name="btnAdd" Content="Добавить" Click="btnAdd_Click"/>
             <ComboBox x:Name="cmBoxUnits" ItemsSource="{Binding Units}" SelectionChanged="cmBoxUnits_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
@@ -36,6 +36,15 @@
                 <ComboBoxItem Content="Текущий месяц"/>
             </ComboBox>
             <TextBox x:Name="tbSearch" TextChanged="tbSearch_TextChanged" Width="100" VerticalContentAlignment="Center"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Сортировка"/>
+                <ComboBox x:Name="cbSort" SelectionChanged="cbSort_SelectionChanged">
+                    <ComboBoxItem Content="А-Я"/>
+                    <ComboBoxItem Content="Я-А"/>
+                    <ComboBoxItem Content="Сначала старые"/>
+                    <ComboBoxItem Content="Сначала новые"/>
+                </ComboBox>
+            </StackPanel>
         </StackPanel>
         <Image />
         <DataGrid Grid.Row="2" Grid.Column="1" ItemsSource="{Binding showedProducts}" IsReadOnly="True" AutoGenerateColumns="False" x:Name="gridProducts" SelectionChanged="gridProducts_SelectionChanged">

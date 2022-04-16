@@ -79,10 +79,23 @@ namespace Shop.Pages
 
         private void btnComplete_Click(object sender, RoutedEventArgs e)
         {
-            Product.Name = tbName.Text;
+            if (cbUnits.SelectedItem == null)
+            {
+                MessageBox.Show("Нужно выбрать страну", "Ошибка");
+                return;
+            }
+
             Product.UnitId = (cbUnits.SelectedItem as Unit).Id;
-            Product.Description = tbDescription.Text;
-            //DataAccess.SaveProduct(Product);
+
+            if (!DataAccess.CheckContent(Product.Name, Product.Description))
+            {
+                MessageBox.Show("Поля наименование и комментарий могут содержать в себе только буквы и следующие символы: пробел и дефис", "Ошибка");
+                return;
+            }
+
+            DataAccess.SaveProduct(Product);
+            DataAccess.SaveProductCountries(Product.Id, lvCountries.Items.Cast<Country>().ToList());
+            NavigationService.GoBack();
         }
 
         private void btnChoicePhoto_Click(object sender, RoutedEventArgs e)
@@ -94,7 +107,13 @@ namespace Shop.Pages
 
             if (fileDialog.ShowDialog().Value)
             {
-                Product.Photo = File.ReadAllBytes(fileDialog.FileName);
+                var photo = File.ReadAllBytes(fileDialog.FileName);
+                if (photo.Length > 1024 * 150)  //Размер фотографии не должен превышать 150 Кбайт
+                {
+                    MessageBox.Show("Размер фотографии не должен превышать 150 КБ", "Ошибка");
+                    return;
+                }
+                Product.Photo = photo;
                 imageProduct.Source = new BitmapImage(new Uri(fileDialog.FileName));
             }
         }
@@ -103,6 +122,8 @@ namespace Shop.Pages
         {
             var countries = lvCountries.Items.Cast<Country>().ToList();
             var productCountry = lvCountries.SelectedItem as Country;
+            if (Product.Id > 0 && productCountry != null)
+                DataAccess.RemoveProductCounrtry(Product.Id, productCountry.Id);
             countries.Remove(productCountry);
 
             lvCountries.ItemsSource = countries;

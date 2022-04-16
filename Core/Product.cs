@@ -28,6 +28,7 @@ namespace Core
         public string Description { get; set; }
         public int UnitId { get; set; }
         public System.DateTime AddDate { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Unit Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

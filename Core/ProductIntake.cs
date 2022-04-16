@@ -24,6 +24,7 @@ namespace Core
         public int SupplierId { get; set; }
         public decimal TotalAmount { get; set; }
         public System.DateTime Data { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Supplier Supplier { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

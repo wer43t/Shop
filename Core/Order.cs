@@ -25,6 +25,7 @@ namespace Core
         public System.DateTime Date { get; set; }
         public Nullable<int> ClientId { get; set; }
         public Nullable<int> StatusOrderId { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Client Client1 { get; set; }

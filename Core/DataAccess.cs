@@ -10,6 +10,10 @@ namespace Core
 {
     public static class DataAccess
     {
+        public delegate void NewItemAddedDelegate();
+
+        public static event NewItemAddedDelegate NewItemAddedEvent;
+
         public static ObservableCollection<User> GetUsers()
         {
             return new ObservableCollection<User>(BigShopBase_01Entities.GetContext().User);
@@ -18,6 +22,11 @@ namespace Core
         public static User GetUser(int id)
         {
             return GetUsers().Where(user => user.Id == id).FirstOrDefault();
+        }
+
+        public static bool IsUserCorrect(string login, string password)
+        {
+            return GetUser(login, password) != null;
         }
 
         public static User GetUser(string login, string password)
@@ -110,8 +119,76 @@ namespace Core
             }
             else
                 BigShopBase_01Entities.GetContext().Product.SingleOrDefault(p => p.Id == product.Id);
+            NewItemAddedEvent?.Invoke();
+            return Convert.ToBoolean(BigShopBase_01Entities.GetContext().SaveChanges());
+        }
+
+        public static ObservableCollection<ProductIntake> GetIntakes()
+        {
+            return new ObservableCollection<ProductIntake>(BigShopBase_01Entities.GetContext().ProductIntake);
+        }
+        public static ObservableCollection<Supplier> GetSuppliers()
+        {
+            return new ObservableCollection<Supplier>(BigShopBase_01Entities.GetContext().Supplier);
+        }
+
+        public static void SaveProduct(Product product)
+        {
+            if (GetProducts().Where(p => p.Id == product.Id).Count() == 0)
+            {
+                product.AddDate = DateTime.Now;
+                BigShopBase_01Entities.GetContext().Product.Add(product);
+            }
+            else
+                BigShopBase_01Entities.GetContext().Product.SingleOrDefault(p => p.Id == product.Id);
+
+            Convert.ToBoolean(BigShopBase_01Entities.GetContext().SaveChanges());
+            NewItemAddedEvent?.Invoke();
+
+        }
+
+        public static bool SaveProductCountries(int productId, List<Country> countries)
+        {
+            foreach (var country in countries)
+            {
+                ProductCountry productCountry = new ProductCountry
+                {
+                    ProductId = productId,
+                    CountryId = country.Id
+                };
+
+                if (GetProductCountries().Where(p => p.ProductId == productId && p.CountryId == country.Id).Count() == 0)
+                {
+                    BigShopBase_01Entities.GetContext().ProductCountry.Add(productCountry);
+                }
+            }
 
             return Convert.ToBoolean(BigShopBase_01Entities.GetContext().SaveChanges());
         }
+
+        public static bool RemoveProductCounrtry(int productId, int countryId)
+        {
+            BigShopBase_01Entities.GetContext().ProductCountry.Remove(GetProductCountry(productId, countryId));
+            return Convert.ToBoolean(BigShopBase_01Entities.GetContext().SaveChanges());
+        }
+
+        public static ProductCountry GetProductCountry(int productId, int countryId)
+        {
+            return GetProductCountries().Where(p => p.ProductId == productId && p.CountryId == countryId).FirstOrDefault();
+        }
+
+
+        public static List<ProductCountry> GetProductCountries(Product product)
+        {
+            return GetProductCountries().Where(p => p.ProductId == product.Id).ToList();
+        }
+
+        public static bool CheckContent(string name, string description)
+        {
+            Regex regex = new Regex(@"^[А-Яа-яA-Za-z\s\-]+$");
+
+            return regex.IsMatch(name) && regex.IsMatch(description);
+        }
+
     }
 }
