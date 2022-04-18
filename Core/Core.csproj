@@ -51,99 +51,98 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Country.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccess.cs" />
     <Compile Include="Gender.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Kernell.cs" />
     <Compile Include="Order.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PartProductIntakeProduct.cs" />
+    <Compile Include="PartProductOrder.cs" />
     <Compile Include="Product.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductCountry.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductIntake.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductIntakeProduct.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductOrder.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Shop.Context.cs">
+    <Compile Include="ShopModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Shop.Context.tt</DependentUpon>
+      <DependentUpon>ShopModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Shop.cs">
+    <Compile Include="ShopModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Shop.Designer.cs">
+    <Compile Include="ShopModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Shop.edmx</DependentUpon>
+      <DependentUpon>ShopModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="StatusIntake.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="StatusOrder.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Supplier.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Unit.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Worker.cs">
-      <DependentUpon>Shop.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="Shop.edmx">
+    <EntityDeploy Include="ShopModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Shop.Designer.cs</LastGenOutput>
+      <LastGenOutput>ShopModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Shop.edmx.diagram">
-      <DependentUpon>Shop.edmx</DependentUpon>
+    <None Include="ShopModel.edmx.diagram">
+      <DependentUpon>ShopModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Shop.Context.tt">
+    <Content Include="ShopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Shop.Context.cs</LastGenOutput>
-      <DependentUpon>Shop.edmx</DependentUpon>
+      <DependentUpon>ShopModel.edmx</DependentUpon>
+      <LastGenOutput>ShopModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Shop.tt">
+    <Content Include="ShopModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Shop.edmx</DependentUpon>
-      <LastGenOutput>Shop.cs</LastGenOutput>
+      <DependentUpon>ShopModel.edmx</DependentUpon>
+      <LastGenOutput>ShopModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
